@@ -4,9 +4,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
-import java.time.Instant;
+import java.util.Map;
+
 
 import static Helpers.BaseConstants.*;
 
@@ -47,4 +49,17 @@ public class BaseFunctions {
     protected void waitForPageToLoad() {
 
     }
+
+    public void validateFieldForMap(String key, Map<String, String> map, WebElement element) {
+        String expectedValue = map.get(key).toLowerCase();
+        String actualValue = element.getText().toLowerCase();
+        System.out.println(actualValue);
+        System.out.println(expectedValue);
+        System.out.println("==========");
+
+        Assert.assertEquals(actualValue, expectedValue, "Mismatch for " + key + ". Expected: " + expectedValue + ", Found: " + actualValue);
+    }
+
 }
+
+

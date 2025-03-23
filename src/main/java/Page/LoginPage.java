@@ -4,6 +4,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static Helpers.BaseConstants.DRIVER;
 
@@ -25,7 +26,10 @@ public class LoginPage extends BasePage {
     private WebElement ResetPasswordButton;
 
 
-    public LoginPage() { PageFactory.initElements(DRIVER, this); }
+    public LoginPage() {
+        //wait30.until(ExpectedConditions.visibilityOf(emailField));
+        PageFactory.initElements(DRIVER, this);
+    }
 
     public void LoginAsUser (String username, String password) {
         clearAndSendKeys(emailField, username);
