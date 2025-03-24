@@ -2,13 +2,11 @@ package Steps.AppSteps;
 
 import Helpers.BaseConstants;
 import Helpers.BaseFunctions;
-import Helpers.Table;
 import Page.SessionsPage;
 import Page.SingleSessionPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 
-import java.util.Map;
 
 public class SessionsSteps extends BaseFunctions {
 

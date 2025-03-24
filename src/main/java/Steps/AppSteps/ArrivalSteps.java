@@ -3,7 +3,6 @@ package Steps.AppSteps;
 import Helpers.TestUser;
 import Page.BasePage;
 import Page.LoginPage;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 
 import static Helpers.BaseConstants.USER;

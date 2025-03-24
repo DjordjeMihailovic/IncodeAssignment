@@ -14,14 +14,14 @@ import static Helpers.BaseConstants.*;
 
 public class BaseFunctions {
 
-    protected static JavascriptExecutor js = (JavascriptExecutor) DRIVER;
-    public static WebDriverWait wait30 = new WebDriverWait(DRIVER, Duration.ofSeconds(30));
+    protected JavascriptExecutor js = (JavascriptExecutor) DRIVER;
+    protected WebDriverWait wait30 = new WebDriverWait(DRIVER, Duration.ofSeconds(30));
 
     public void navigateToSite() {
         DRIVER.navigate().to(ENV);
     }
 
-    public static void waitForElementToBeInteractable(WebElement element) {
+    public void waitForElementToBeInteractable(WebElement element) {
         wait30.until(ExpectedConditions.elementToBeClickable(element));
     }
 
@@ -40,38 +40,18 @@ public class BaseFunctions {
         textbox.sendKeys(text);
     }
 
-    public static void SingleClick(WebElement element) {
+    public void SingleClick(WebElement element) {
         waitForElementToBeInteractable(element);
         js.executeScript("arguments[0].scrollIntoView(true);", element);
         element.click();
     }
 
-    protected void waitForPageToLoad() {
-
-    }
-
     public void validateFieldForMap(String key, Map<String, String> map, String value) {
         String expectedValue = map.get(key).toLowerCase();
         String actualValue = value.toLowerCase();
-        System.out.println(actualValue);
-        System.out.println(expectedValue);
-        System.out.println("==========");
 
         Assert.assertEquals(actualValue, expectedValue, "Mismatch for " + key + ". Expected: " + expectedValue + ", Found: " + actualValue);
     }
-
-    public void CrossValidateMapsForKey(String key, Map<String, String> referenceMap, Map<String, String> targetMap) {
-        String expectedValue = referenceMap.get(key).toLowerCase();
-        String actualValue = targetMap.get(key).toLowerCase();
-        System.out.println(actualValue);
-        System.out.println(expectedValue);
-        System.out.println("==========");
-
-        Assert.assertEquals(actualValue, expectedValue, "Mismatch for key: " + key + ". Expected: " + expectedValue + ", Found: " + actualValue);
-    }
-
-
-
 
 }
 

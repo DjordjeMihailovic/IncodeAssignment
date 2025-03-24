@@ -1,6 +1,5 @@
 package Page;
 
-import Helpers.BaseConstants;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,6 +12,7 @@ import static Helpers.BaseConstants.GeneratedFlowName;
 
 public class FlowsPage extends BasePage {
 
+
     @FindBy(xpath = "//button[contains(text(), 'New')]")
     private WebElement newButton;
 
@@ -21,10 +21,6 @@ public class FlowsPage extends BasePage {
 
     @FindBy(xpath = "//div[starts-with(@class, 'menu-list')]//button")
     private WebElement FlowActions;
-
-
-
-
 
     @FindBy(xpath = "//input[contains(@id, 'name')]")
     private WebElement flowNameInput;
@@ -45,9 +41,7 @@ public class FlowsPage extends BasePage {
     private WebElement ConfirmButton;
 
 
-
     public FlowsPage() {
-        // wait30.until(ExpectedConditions.visibilityOf(AddFilterButton));
         PageFactory.initElements(DRIVER, this);
     }
 
@@ -68,7 +62,6 @@ public class FlowsPage extends BasePage {
         GeneratedFlowName = "AutoFlow" + (1000000 + new Random().nextInt(9000000));
         clearAndSendKeys(flowNameInput, GeneratedFlowName);
     }
-
 
     public void iClickOnNewFlowNextButton() {
         SingleClick(NewFlowNextButton);

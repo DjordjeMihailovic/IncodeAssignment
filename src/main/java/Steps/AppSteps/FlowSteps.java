@@ -21,16 +21,16 @@ public class FlowSteps extends BasePage {
         new FlowsPage().iClickOnNewFlowNextButton();
 
         String[] moduleNames = modules.split(", ");
-        System.out.println(moduleNames);
-        for (String moduleName : moduleNames) {
-            new FlowsPage().iAddModuleName(moduleName);
-        }
+            for (String moduleName : moduleNames) {
+                new FlowsPage().iAddModuleName(moduleName);
+            }
 
     }
 
     @And("I click on Save Flow")
     public void iClickOnSaveFlow() {
-        forcedwait(2);
+        // not ideal
+        forcedwait(3);
         new FlowsPage().iClickOnSaveFlowButton();
     }
 
@@ -38,9 +38,9 @@ public class FlowSteps extends BasePage {
     @And("I do Action {string} on my Flow")
     public void iDoActionOnMyFlow(String action) {
         new FlowsPage().iDoActionOnFlow(GeneratedFlowName, action);
-        if (action.equals("Delete flow")) {
-            new FlowsPage().iClickOnConfirmButton();
-        }
+            if (action.equals("Delete flow")) {
+                new FlowsPage().iClickOnConfirmButton();
+            }
     }
 
     @Then("My Flow should be created successfully")
@@ -49,6 +49,6 @@ public class FlowSteps extends BasePage {
         Map<String, String> presentFlow = new Table().getHeaderToCellMappingForRow(0);
 
         assertEquals("My Flow was not created successfully", GeneratedFlowName, presentFlow.get("NAME"));
-
     }
+
 }

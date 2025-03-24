@@ -21,7 +21,6 @@ public class Begin_Test {
     @Before
     public void BeginScenario(Scenario scenario) throws FileNotFoundException {
 
-        // I have only one User for testing
         USER = new TestUser("Bob");
 
         // These are used for when executing in CI/CD env like Jenkins; I would pass these parameters from there
@@ -46,7 +45,6 @@ public class Begin_Test {
         }
 
         System.out.println("Test began, opening browser " + BROWSER + "\nTesting scenario: " + scenario.getName());
-
         DRIVER = buildForBrowser(BROWSER);
 
     }
@@ -55,7 +53,6 @@ public class Begin_Test {
         WebDriver driver = null;
         BROWSER = browser;
         switch (BROWSER) {
-
             case "chrome":
                 ChromeOptions localchromeOptions = new ChromeOptions();
 
@@ -68,17 +65,24 @@ public class Begin_Test {
                 driver = new ChromeDriver(localchromeOptions);
                 break;
 
+                // I could not get headless to work properly, please use regular chrome
             case "headlesschrome":
                 ChromeOptions headlesschromeOptions = new ChromeOptions();
 
                 headlesschromeOptions.addArguments("--headless");
                 headlesschromeOptions.addArguments("--window-size=1920x1080");
                 headlesschromeOptions.addArguments("--disable-gpu");
+                headlesschromeOptions.addArguments("--disable-dev-shm-usage"); // Helps with stability
                 headlesschromeOptions.addArguments("--no-sandbox");
                 headlesschromeOptions.addArguments("--incognito");
+                headlesschromeOptions.addArguments("--font-render-hinting=none");
 
                 driver = new ChromeDriver(headlesschromeOptions);
                 break;
+
+            default:
+                System.err.println("Browser type '" + BROWSER + "' is not supported. Please use 'chrome' or 'headlesschrome'.");
+                throw new IllegalArgumentException("Unsupported browser type: " + BROWSER);
 
         }
 
@@ -88,5 +92,6 @@ public class Begin_Test {
         return driver;
 
     }
+
 }
 

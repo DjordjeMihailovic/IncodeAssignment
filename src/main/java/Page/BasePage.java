@@ -8,8 +8,8 @@ import static Helpers.BaseConstants.DRIVER;
 
 public class BasePage extends BaseFunctions {
 
-    public static void ClickOnTheNavMenuItem(String item) {
-        WebElement navLink = DRIVER.findElement(By.linkText(item));
+    public void ClickOnTheNavMenuItem(String item) {
+        WebElement navLink = DRIVER.findElement(By.xpath("//a[contains(text(),'" + item + "')]"));
         SingleClick(navLink);
     }
 

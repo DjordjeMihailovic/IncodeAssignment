@@ -4,7 +4,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static Helpers.BaseConstants.DRIVER;
 
@@ -32,12 +31,10 @@ public class LoginPage extends BasePage {
 
     public void LoginAsUser (String username, String password) {
         clearAndSendKeys(emailField, username);
-        // yuk, but I got this for now
+        // I want the field to lose focus, so password field can revalidate
         emailField.sendKeys(Keys.TAB);
         clearAndSendKeys(passwordField, password);
         SingleClick(loginButton);
     }
-
-
 
 }
