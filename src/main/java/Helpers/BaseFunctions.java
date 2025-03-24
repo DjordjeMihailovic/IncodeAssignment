@@ -4,13 +4,13 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.time.Duration;
 import java.util.Map;
 
-
 import static Helpers.BaseConstants.*;
+import static org.junit.Assert.assertTrue;
+
 
 public class BaseFunctions {
 
@@ -50,7 +50,7 @@ public class BaseFunctions {
         String expectedValue = map.get(key).toLowerCase();
         String actualValue = value.toLowerCase();
 
-        Assert.assertEquals(actualValue, expectedValue, "Mismatch for " + key + ". Expected: " + expectedValue + ", Found: " + actualValue);
+        assertTrue("Mismatch for " + key + ". Expected: " + expectedValue + ", Found: " + actualValue, expectedValue.trim().equals(actualValue.trim()));
     }
 
 }

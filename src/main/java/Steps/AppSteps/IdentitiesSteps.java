@@ -7,7 +7,7 @@ import io.cucumber.java.en.Then;
 
 import java.util.List;
 
-import static org.testng.Assert.assertTrue;
+import static org.junit.Assert.assertTrue;
 
 public class IdentitiesSteps extends BasePage {
 
@@ -20,7 +20,7 @@ public class IdentitiesSteps extends BasePage {
         List<String> columnValues = table.getColumnValues(column);
         String value = BaseConstants.sessionUserFieldValue.toLowerCase();
 
-        assertTrue(columnValues.contains(value), "The value '" + value + "' is not found in the column values: " + columnValues);
+        assertTrue("The value '" + value + "' is not found in the column values: " + columnValues, columnValues.contains(value));
     }
 
 }

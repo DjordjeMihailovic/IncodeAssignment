@@ -9,7 +9,8 @@ import io.cucumber.java.en.Then;
 import java.util.Map;
 
 import static Helpers.BaseConstants.GeneratedFlowName;
-import static org.testng.AssertJUnit.assertEquals;
+import static org.junit.Assert.assertEquals;
+
 
 public class FlowSteps extends BasePage {
 

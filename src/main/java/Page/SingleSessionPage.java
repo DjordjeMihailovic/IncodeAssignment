@@ -10,7 +10,7 @@ import java.util.Map;
 
 
 import static Helpers.BaseConstants.DRIVER;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.junit.Assert.assertTrue;
 
 public class SingleSessionPage extends BasePage {
 
