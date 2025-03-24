@@ -20,4 +20,8 @@ public class ArrivalSteps extends BasePage {
         ClickOnTheNavMenuItem(navBarElement);
     }
 
+    @Given("^I navigate to (Site|Sessions|Identities|Authentications|Analytics|Flows|Workflows|Compliance|Users|Status|Configuration)")
+    public void iGoNavigateTo(String navBarElement) {
+        ClickOnTheNavMenuItem(navBarElement);
+    }
 }

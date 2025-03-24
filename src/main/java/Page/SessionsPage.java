@@ -17,11 +17,22 @@ public class SessionsPage extends BasePage {
     @FindBy(xpath = "//button[text()='Add Filter']")
     private WebElement AddFilterButton;
 
+    Table table = new Table();
 
     public SessionsPage() {
-        wait30.until(ExpectedConditions.visibilityOf(AddFilterButton));
+       // wait30.until(ExpectedConditions.visibilityOf(AddFilterButton));
         PageFactory.initElements(DRIVER, this);
     }
+
+    public Map<String, String> getSessionTableDataForRow (int num) {
+        return table.getHeaderToCellMappingForRow(num);
+    }
+
+    public void iClickOnSessionRow(int row) {
+        table.ClickOnRow(row);
+    }
+
+
 
 }
 

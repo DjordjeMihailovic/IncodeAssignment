@@ -15,7 +15,7 @@ import static Helpers.BaseConstants.*;
 public class BaseFunctions {
 
     protected static JavascriptExecutor js = (JavascriptExecutor) DRIVER;
-    protected static WebDriverWait wait30 = new WebDriverWait(DRIVER, Duration.ofSeconds(30));
+    public static WebDriverWait wait30 = new WebDriverWait(DRIVER, Duration.ofSeconds(30));
 
     public void navigateToSite() {
         DRIVER.navigate().to(ENV);
@@ -50,15 +50,28 @@ public class BaseFunctions {
 
     }
 
-    public void validateFieldForMap(String key, Map<String, String> map, WebElement element) {
+    public void validateFieldForMap(String key, Map<String, String> map, String value) {
         String expectedValue = map.get(key).toLowerCase();
-        String actualValue = element.getText().toLowerCase();
+        String actualValue = value.toLowerCase();
         System.out.println(actualValue);
         System.out.println(expectedValue);
         System.out.println("==========");
 
         Assert.assertEquals(actualValue, expectedValue, "Mismatch for " + key + ". Expected: " + expectedValue + ", Found: " + actualValue);
     }
+
+    public void CrossValidateMapsForKey(String key, Map<String, String> referenceMap, Map<String, String> targetMap) {
+        String expectedValue = referenceMap.get(key).toLowerCase();
+        String actualValue = targetMap.get(key).toLowerCase();
+        System.out.println(actualValue);
+        System.out.println(expectedValue);
+        System.out.println("==========");
+
+        Assert.assertEquals(actualValue, expectedValue, "Mismatch for key: " + key + ". Expected: " + expectedValue + ", Found: " + actualValue);
+    }
+
+
+
 
 }
 

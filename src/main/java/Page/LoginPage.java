@@ -27,7 +27,6 @@ public class LoginPage extends BasePage {
 
 
     public LoginPage() {
-        //wait30.until(ExpectedConditions.visibilityOf(emailField));
         PageFactory.initElements(DRIVER, this);
     }
 
