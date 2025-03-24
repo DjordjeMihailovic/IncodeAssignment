@@ -36,7 +36,7 @@ public class SingleSessionPage extends BasePage {
     @FindBy(xpath = "//span[@class='span-title' and contains(text(),'Full Name (OCR)')]/following-sibling::span")
     private WebElement FullNameOcr;
 
-    @FindBy(xpath = "//button[text()='Add Face to Database']")
+    @FindBy(xpath = "//button[text()='Add face to Database']")
     private WebElement addFaceToDatabaseButton;
 
 
@@ -59,7 +59,7 @@ public class SingleSessionPage extends BasePage {
         if (addFaceToDatabaseButton.isEnabled()) {
             SingleClick(addFaceToDatabaseButton);
         }
-        WebElement faceToDatabaseTextElement = DRIVER.findElement(By.xpath("//*[text()='Face in Database']"));
+        WebElement faceToDatabaseTextElement = DRIVER.findElement(By.xpath("//*[text()='Face in database']"));
         assertTrue("Could not find add the Face to Database", faceToDatabaseTextElement.isDisplayed());
 
     }

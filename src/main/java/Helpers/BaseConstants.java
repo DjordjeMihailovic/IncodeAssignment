@@ -29,6 +29,7 @@ public class BaseConstants {
 
     public static String sessionUserFieldValue;
 
+    public static String GeneratedFlowName;
 
 
 }

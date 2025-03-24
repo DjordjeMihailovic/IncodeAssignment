@@ -19,11 +19,18 @@ public class Table extends BaseFunctions {
 
 
 
-    public Table() {
-        this.tableElement = DRIVER.findElement(By.cssSelector("table"));
+    /*public Table() {
+        this.tableElement = DRIVER.findElement(By.cssSelector("table[class$='table']"));
         headers = tableElement.findElements(By.cssSelector("th[id]"));
         rows = tableElement.findElements(By.cssSelector("tr[class*='row']"));
+    }*/
+
+    public Table() {
+        this.tableElement = DRIVER.findElement(By.cssSelector("table[class$='table']"));
+        headers = tableElement.findElements(By.cssSelector("thead th:not(:empty)"));
+        rows = tableElement.findElements(By.cssSelector("tbody tr"));
     }
+
 
     public static List<String> getHeaderNames() {
         return headers.stream()
@@ -124,6 +131,24 @@ public class Table extends BaseFunctions {
         return columnValues;
     }
 
+    public static int findRowNumberByCellValue(String value) {
+        // Iterate through all rows
+        for (int rowIndex = 0; rowIndex < rows.size(); rowIndex++) {
+            WebElement row = rows.get(rowIndex);
+
+            // Get all <td> elements for the current row
+            List<WebElement> cells = row.findElements(By.cssSelector("td"));
+
+            // Search for the text in the <td> elements
+            for (WebElement cell : cells) {
+                if (cell.getText().toLowerCase().trim().equals(value)) {
+                    return rowIndex; // Return the row index if the value matches
+                }
+            }
+        }
+
+        return -1; // Return -1 if the value is not found in any row
+    }
 
 
 

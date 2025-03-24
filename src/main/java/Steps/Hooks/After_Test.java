@@ -29,13 +29,11 @@ public class After_Test {
             System.out.println("Scenario: " + scenario.getName() + " completed successfully.");
         }
 
-        // Destroy the WebDriver
-        if (DRIVER != null) {
-            DRIVER.quit();
-        }
-
         // Log test finish time
         System.out.println("Test finished at: " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         System.out.println("===============================================");
-    }
+        DRIVER.quit();
+        DRIVER = null; // Set it to null after quitting to avoid reuse
+        }
+
 }

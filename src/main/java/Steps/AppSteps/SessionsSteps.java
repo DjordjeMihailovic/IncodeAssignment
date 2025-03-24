@@ -13,15 +13,14 @@ import java.util.Map;
 public class SessionsSteps extends BaseFunctions {
 
 
-    @And("I extract the {int}. Session data")
-    public void iExtractSessionData(int number) {
-        int rowIndex = number - 1;
-        BaseConstants.sessionCellsMapped = new SessionsPage().getSessionTableDataForRow(rowIndex);
+    @And("I extract the Session data for id {string}")
+    public void iExtractSessionData(String value) {
+        BaseConstants.sessionCellsMapped = new SessionsPage().getSessionTableDataForRowWithValue(value);
     }
 
-    @And("I click on the {int}. Session")
-    public void iClickOnTheSession(int num) {
-        new SessionsPage().iClickOnSessionRow(num);
+    @And("I click on the Session containing id {string}")
+    public void iClickOnTheSession(String value) {
+        new SessionsPage().iClickOnSessionRowWithValue(value);
     }
 
     @Then("The Session row values should match with values on the Single Session Page")
@@ -40,4 +39,5 @@ public class SessionsSteps extends BaseFunctions {
     public void iSaveTheOfTheUserInSingleSessionPage(String field) {
        BaseConstants.sessionUserFieldValue = new SingleSessionPage().getIDFieldValue(field);
     }
+
 }

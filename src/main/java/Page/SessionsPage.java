@@ -24,15 +24,19 @@ public class SessionsPage extends BasePage {
         PageFactory.initElements(DRIVER, this);
     }
 
-    public Map<String, String> getSessionTableDataForRow (int num) {
-        return table.getHeaderToCellMappingForRow(num);
+    public Map<String, String> getSessionTableDataForRowWithValue (String value) {
+        int rownum = table.findRowNumberByCellValue(value);
+        return table.getHeaderToCellMappingForRow(rownum);
     }
 
     public void iClickOnSessionRow(int row) {
         table.ClickOnRow(row);
     }
 
-
+    public void iClickOnSessionRowWithValue(String value) {
+        WebElement cell = DRIVER.findElement(By.xpath("//td[text()='" + value + "']"));
+        SingleClick(cell);
+    }
 
 }
 
