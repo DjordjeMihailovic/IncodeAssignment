@@ -45,6 +45,7 @@ public class Begin_Test {
         }
 
         System.out.println("Test began, opening browser " + BROWSER + "\nTesting scenario: " + scenario.getName());
+        // could be a ThreadLocal, but there is no need to run tests in parallel locally for now
         DRIVER = buildForBrowser(BROWSER);
 
     }

@@ -27,4 +27,5 @@ Feature: Automation Assignment Test Cases
     And I do Action "Activate Flow" on my Flow
     Then My Flow should be created successfully
     # I don't like cleaning like this, clean-up module should be set separately
+    # like a step 'And I Delete all my Automation generated Flows'
     And I do Action "Delete flow" on my Flow
